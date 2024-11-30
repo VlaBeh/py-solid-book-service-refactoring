@@ -1,18 +1,11 @@
-from abc import ABC, abstractmethod
-from managers import Book
+from app.interface import IDisplayStrategy
 
 
-class DisplayBasic(ABC):
-    @abstractmethod
-    def display(self, book: Book) -> None:
-        pass
+class ConsoleDisplayStrategy(IDisplayStrategy):
+    def display(self, content: str) -> None:
+        print(content)
 
 
-class DisplayConsole(DisplayBasic):
-    def display(self, book: Book) -> None:
-        print(book.content)
-
-
-class DisplayReverse(DisplayBasic):
-    def display(self, book: Book) -> None:
-        print(book.content[::-1])
+class ReverseDisplayStrategy(IDisplayStrategy):
+    def display(self, content: str) -> None:
+        print(content[::-1])
